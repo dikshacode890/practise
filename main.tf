@@ -7,7 +7,7 @@ variable "cidr" {
 }
 resource "aws_key_pair" "diksha_key" {
   key_name   = diksha34
-  public_key = file("~/.ssh/id_rsa.pub")
+  private_key = file("${path.module}/diksha34.pem")
   
 }
 resource "aws_vpc" "diksha_vpc" {
@@ -84,7 +84,7 @@ resource "aws_instance" "diksha_ec2" {
     connection {
     type        = "ssh"
     user        = "ubuntu"  # Replace with the appropriate username for your EC2 instance
-    private_key = file("~/.ssh/id_rsa")  # Replace with the path to your private key
+    private_key = file("${path.module}/diksha34.pem")  # Replace with the path to your private key
     host        = self.public_ip
   } 
 
@@ -106,4 +106,5 @@ resource "aws_instance" "diksha_ec2" {
   }
   
 }
+
 
