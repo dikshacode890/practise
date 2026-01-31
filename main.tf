@@ -6,7 +6,7 @@ variable "cidr" {
   default = "10.0.0.0/16"
 }
 resource "aws_key_pair" "diksha_key" {
-  key_name   = 
+  key_name   = diksha34
   public_key = file("~/.ssh/id_rsa.pub")
   
 }
@@ -77,7 +77,7 @@ resource "aws_instance" "diksha_ec2" {
     ami =     
     instance_type = "t2.micro"
     subnet_id = aws_subnet.diksha_public_subnet.id
-    key_name  =  
+    key_name  =  diksha34
     vpc_security_group_ids = [aws_security_group.diksha.id]
 
 
@@ -106,3 +106,4 @@ resource "aws_instance" "diksha_ec2" {
   }
   
 }
+
